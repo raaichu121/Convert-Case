@@ -1,5 +1,5 @@
 
-#Convert-Case - A React-based Text Utility App
+# **Convert-Case - A React-based Text Utility App**
 
 Convert-Case is a simple, single-page React application that provides various text manipulation utilities. It allows users to perform common text transformations, analyze text properties, and get quick insights into their written content.
 Features
