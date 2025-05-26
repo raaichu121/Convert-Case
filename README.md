@@ -1,19 +1,5 @@
 # **✨ Convert-Case: Your Ultimate Text Transformation Hub ✨**
 
-## Table of Contents
-
-* [🌟 About the Project](#-about-the-project)
-* [🚀 Features](#-features)
-* [🛠️ Technologies Used](#️-technologies-used)
-* [⚡ Quick Start](#-quick-start)
-    * [Prerequisites](#prerequisites)
-    * [Installation](#installation)
-    * [Running the Application](#running-the-application)
-* [📸 Screenshots / Demo](#-screenshots--demo)
-* [💡 How to Use](#-how-to-use)
-* [🤝 Contributing](#-contributing)
-* [📄 License](#-license)
-
 ---
 
 ## 🌟 About the Project
@@ -84,17 +70,6 @@ Ensure you have Node.js and npm (or yarn) installed on your system.
     yarn start
     ```
     This command will launch the app in development mode, and it should automatically open in your default web browser at `http://localhost:3000`.
-
----
-
-## 📸 Screenshots / Demo
-
-_(To make your README truly attractive, consider adding images or GIFs here! Replace this text with actual visual content.)_
-
-* **Screenshot 1: Main Interface**
-    ![Main Interface Screenshot](path/to/your/screenshot1.png)
-* **GIF Demo: Text Transformations in Action**
-    ![Text Transformations GIF](path/to/your/demo.gif)
 
 ---
 
