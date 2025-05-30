@@ -8,7 +8,6 @@ export default function TextForm(props) {
   const handleUpClick = () => {
     let newText = text.toUpperCase();
     setText(newText);
-     // Example of prop usage
   };
 
   const handleLoClick = () => {
@@ -28,7 +27,7 @@ export default function TextForm(props) {
       result += i % 2 === 0 ? text[i].toLowerCase() : text[i].toUpperCase();
     }
     setText(result); // Update the 'text' state
-   }
+  };
 
   // 4. Title Case
   const handleTitleCaseClick = () => {
@@ -105,37 +104,51 @@ export default function TextForm(props) {
     setText(event.target.value);
   };
 
+  // Determine colors based on the mode prop
+  const textColor = props.mode === 'dark' ? 'white' : 'black';
+  // Determine textarea background color
+  const textAreaBg = props.mode === 'dark' ? '#495057' : 'white'; // A specific dark background for textarea
+
+  // Word and character count (filter out empty strings from split)
   const wordCount = text.split(/\s+/).filter(word => word.length > 0).length;
 
   return (
     <>
-      <div className="container">
-        <h1>{props.heading}</h1>
+      <div className="container" style={{ color: textColor }}>
+        {/* CORRECTED LINE HERE */}
+        <h1 style={{ color: textColor }}>{props.heading}</h1>
         <div className="mb-3">
           <textarea
             className="form-control"
             placeholder="Enter text here"
             value={text}
             onChange={handleOnChange}
+            style={{
+              backgroundColor: textAreaBg,
+              color: textColor,
+              border: props.mode === 'dark' ? '1px solid #6c757d' : '1px solid #ced4da'
+            }}
             id="myBox"
             rows="8"
           ></textarea>
         </div>
-        <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={handleUpClick}>Uppercase</button>
-        <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={handleLoClick}>Lowercase</button>
-        <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={handleAlternatingCaseClick}>Alternating Case</button>
-        <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={handleTitleCaseClick}>Title Case</button>
-        <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={handleWideTextClick}>Wide Text</button>
-        <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={handleZalgoTextClick}>Zalgo Text</button>
-        <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={handleUnicodeBoldTextClick}>Unicode Bold</button>
-        <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={handleClearClick}>Clear Text</button>
+        {/* Buttons - use disabled prop correctly for when text is empty */}
+        <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={handleUpClick}>Uppercase</button>
+        <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={handleLoClick}>Lowercase</button>
+        <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={handleAlternatingCaseClick}>Alternating Case</button>
+        <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={handleTitleCaseClick}>Title Case</button>
+        <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={handleWideTextClick}>Wide Text</button>
+        <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={handleZalgoTextClick}>Zalgo Text</button>
+        <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={handleUnicodeBoldTextClick}>Unicode Bold</button>
+        <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={handleClearClick}>Clear Text</button>
       </div>
 
-      <div className="container my-3">
+      <div className="container my-3" style={{ color: textColor }}> {/* This container also needs to respect textColor */}
         <h1>Your Text Summary</h1>
         <p> {wordCount} words and {text.length} characters </p>
         <p> {0.008 * wordCount} Minutes Read</p> {/* Assuming 1 word per 0.008 minutes */}
         <h2>Preview</h2>
+        {/* Preview text color will be inherited from the container's style */}
         <p> {text.length > 0 ? text : "Enter something in the textbox above to preview it here."} </p>
       </div>
     </>
